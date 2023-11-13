@@ -1,0 +1,30 @@
+<!-- Dropdown Structure -->
+<ul id="demos" class="dropdown-content">
+    <li><a routerLink="bindings1">Démo 1 : Les différents Bindings</a></li>
+    <li><a routerLink="pipes2">Démo 2 : Les pipes d'affichage</a></li>
+</ul>
+
+
+<ul id="exos" class="dropdown-content">
+</ul>
+
+<nav>
+    <div class="nav-wrapper">
+        <a href="#!" routerLink="" class="brand-logo">Croix Rouge</a>
+        <ul class="right hide-on-med-and-down">
+            <li>
+                <a class="dropdown-trigger" data-target="demos">
+                    Listes de Demos pour angular V16 - Mise à jour 2023
+                    <!-- Rajout de texte useless pour aggrandir le dropdown de materialize...-->
+                    <i class="material-icons right">arrow_drop_down</i>
+                </a>
+            </li>
+            <li>
+                <a class="dropdown-trigger" data-target="exos">
+                    Listes de Exos pour angular
+                    <i class="material-icons right">arrow_drop_down</i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
