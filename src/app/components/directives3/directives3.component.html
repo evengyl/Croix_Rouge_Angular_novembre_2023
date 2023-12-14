@@ -1,0 +1,237 @@
+<h3 class="center">Les différentes directives, structurelles, attributs, customs</h3>
+
+<h5 class="center">Les Directives structurelles</h5>
+
+<div class="row">
+    
+    <div class="col s6">
+        <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+                <button *ngIf="!isShow" (click)="show()">Show</button>
+                <button *ngIf="isShow" (click)="hide()">Hide</button>
+
+                <p *ngIf="isShow">Le piment Habanero est originaire du Mexique et fait partie 
+                    des piments les plus forts au monde. C'est un piment extrêmement piquant et brûlant,
+                    mais il est aussi très savoureux avec un arome tropical.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col s6">
+
+        <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+                <span class="card-title">Avec Un Else</span>
+                <button *ngIf="!isConnect" (click)="connect()">Connect</button>
+                <button *ngIf="isConnect" (click)="disconnect()">Disconnect</button>
+
+                <p *ngIf="isConnect; else notLogged">Welcome back Pignoufs !</p>
+
+                <ng-template #notLogged>
+                    <p>Please Login to Pignoufs</p>
+                </ng-template>
+               
+            </div>
+        </div>
+    </div>
+
+    <div class="col s6">
+
+        <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+                <span class="card-title">Avec Un then else</span>
+                
+                <div *ngIf="isConnect; then thenBlock else elseBlock">
+                    Votre status de connexion
+                </div>
+
+                <ng-template #thenBlock>
+                    <button (click)="disconnect()">Disconnect</button>
+                    Welcome back Pignoufs !
+                </ng-template>
+
+                <ng-template #elseBlock>
+                    <button (click)="connect()">Connect</button>
+                    Please Login to Pignoufs
+                </ng-template>
+
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="col s12">
+        <div class="card blue-grey darken-1">
+            <div class="card-content">
+                <span class="card-title">Le *ngFor</span>
+                <!--Classique-->
+                <ul class="collection">
+                    <li class="collection-item" *ngFor="let piment of listPiments">
+                        {{ piment.name }} - {{ piment.scoville }} - {{ piment.categ}}
+                    </li>
+                </ul>
+
+                <!--classique avec index-->
+                <ul class="collection">
+                    <li class="collection-item" *ngFor="let piment of listPiments; let i = index">
+                        {{i +1}} : {{ piment.name }} - {{ piment.scoville }} - {{ piment.categ}}
+                    </li>
+                </ul>
+
+
+                <!--classique avec keyvalue - pair-->
+                <ul class="collection">
+                    <li class="collection-item" *ngFor="let item of listPiments | keyvalue">
+                        {{ item.key }} - {{ item.value | json }} - Nom du piment {{ item.value.name}}
+                    </li>
+                </ul>
+
+
+                <table class="striped highlight centered white">
+                    <tbody>
+                        <tr *ngFor="let piment of listPiments; first as isFirst; last as isLast; count as counter; odd as isOdd; even as isEven">
+                            <td *ngIf="isFirst">Minimal Scoville Level {{ piment.scoville }}</td>
+                            <td *ngIf="isLast">Maximal Scoville Level {{ piment.scoville }}</td>
+                            <td *ngIf="isLast">Total Evaluated {{ counter }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col s12">
+        <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+                <span class="card-title red p1">!! Attention !!</span>
+                <p class="red p1">
+                    ATTENTION !!!!!! on ne peux pas mettre dans un balise, un *ngIf et un *ngFor en même temps<br>
+            Vous pouvez, au besoin, <ng-container></ng-container>, elle n'apparait juste pas même avec condition.
+            Le ng-container n'est utiliser que pour ls cas de doublons ngif et ngfor OU pour pour faire du ngif ou ngfor sans balise html visible dans le client
+                </p>
+                <h4>Exemple facile de ng-container</h4>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col s12">
+        <div class="card blue-grey darken-1">
+            <div class="card-content">
+                <span class="card-title red p1">!! Attention exemple avec ngif et ngfor en même temps !!</span>
+                <button class="btn green waves-effect waves-light" (click)="setFilterName(filter.value)" *ngFor="let filter of listButtonsSorting">
+                    {{ filter.humanName }}
+                </button>
+                <button class="btn green waves-effect waves-light" (click)="setFilterName('')">
+                    aucun filtre
+                </button>
+
+                <p class="p1 blue-grey darken-1">Current Filter Name : {{ valueFilter }}</p>
+
+                <ul class="collection">
+                    <ng-container *ngFor="let piment of listPiments">
+                        <li *ngIf="piment.categ == valueFilter || valueFilter == ''" class="collection-item" >
+                            {{ piment.name }} - {{ piment.scoville }} - {{ piment.categ}}
+                        </li>
+                    </ng-container>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+
+<hr>
+
+
+<h5 class="center">Les Directives d'attibuts</h5>
+
+<div class="row">
+    <div class="col s4">
+        <div class="card blue-grey lighten-4">
+            <div class="card-content white-text">
+                <span class="card-title">La directive ngStyle</span>
+                <p *ngFor="let piment of listPiments" [ngStyle]="{ 'color' : getColor(piment.categ) }">
+                    {{ piment.name}} {{ piment.categ }}
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col s4">
+        <div class="card blue-grey lighten-4">
+            <div class="card-content white-text">
+                <span class="card-title">La directive ngStyle</span>
+                <button class="btn green waves-effect waves-light" (click)="addBold()">Mettre le texte en gras</button>
+                <button class="btn green waves-effect waves-light" (click)="remBold()">Remettre par défaut le texte</button>
+                <p *ngFor="let piment of listPiments" [ngClass]="getClass(piment.categ)">
+                    {{ piment.name}} {{ piment.categ }}
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col s4">
+        <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+                <span class="card-title">Les différentes paramétrisation des directives ngClass et ngStyle</span>
+                <p [ngClass]="'bold'">Lorem ipsum dolor sit amet.</p>
+                <p [ngClass]="classAdded">Lorem ipsum dolor sit amet.</p>
+                <button (click)="activeTeal()">Trigger Teal</button>
+                <p [ngClass]="{'card-panel teal lighten-2' : isActive}">Lorem ipsum dolor sit amet.</p>
+                <p [ngClass]="['card-panel', 'red', 'darken-1']">Lorem ipsum dolor sit amet.</p>
+                <p [ngClass]="getClass('light')">Lorem ipsum dolor sit amet.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<hr>
+
+
+<h5 class="center">Les Directives Custom</h5>
+
+
+<div class="row">
+    <div class="col s4">
+        <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+                <span class="card-title">La directive custom simple</span>
+                <p *ngFor="let piment of listPiments" Zoomit>
+                    {{ piment.name}} {{ piment.categ }}
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col s4">
+        <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+                <span class="card-title">La directive custom avec event</span>
+                <p *ngFor="let piment of listPiments" ZoomitEvent>
+                    {{ piment.name}} {{ piment.categ }}
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col s4">
+        <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+                <span class="card-title">La directive custom avec event et params</span>
+                <input type="text" [(ngModel)]="colorText">
+                <input type="text" [(ngModel)]="fontSizeText">
+                <input type="text" [(ngModel)]="colorBackground">
+                <p *ngFor="let piment of listPiments" [ZoomitEventParams]="[colorText, fontSizeText, colorBackground]">
+                    {{ piment.name}} {{ piment.categ }}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
