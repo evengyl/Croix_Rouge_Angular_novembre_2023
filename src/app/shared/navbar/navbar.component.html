@@ -6,11 +6,16 @@
     <li><a routerLink="inputoutput4">Démo 4 : La communication entre composant Input Output</a></li>
     <li><a routerLink="demomaterial">Démo hors norme : material ng</a></li>
     <li><a routerLink="zniofjqig">Démo 5 : 404</a></li>
-    <li><a routerLink="dependencyinjection6">Démo 6 : Injection de dépendances par les services</a></li>
+    <li><a routerLink="dependencyinjection6">Démo 6 + 11 : Injection de dépendances par les services + storages</a></li>
     <li><a routerLink="advanceroutage">Démo 7 : Routage avancé avec params et query</a></li>
-    <li><a routerLink="guards8">Démo 8 : Les gardiens de route</a></li>
+    <li><a routerLink="guards8">Démo 8 : Les gardiens de route version ng15</a></li>
     <li><a routerLink="refreshpromise9">Démo 9 : refresh sur les promise + async await</a></li>
     <li><a routerLink="reactiveforms10">Démo 10 : Les Reactives Forms</a></li>
+    <li><a routerLink="httpclientobs12">Démo 12 : Le HttpClient et les Observables de RXJS</a></li>
+    <li><a routerLink="signals13">Démo 13 : Les signals (ng 16)</a></li>
+    <li><a routerLink="resolver14">Démo 14 : Le Resolver version ng15</a></li>
+    <li><a routerLink="asyncvalidator">Démo 15 : Les Validators Asynchrone</a></li>
+    
 </ul>
 
 
@@ -21,6 +26,10 @@
     <div class="nav-wrapper">
         <a href="#!" routerLink="" class="brand-logo">Croix Rouge</a>
         <ul class="right hide-on-med-and-down">
+            <li>Status SERVE : {{ isConnectSERVE }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+            <li>Status OBS : {{ isConnectOBS }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+            <li>Cpunt signal : {{ count() }}</li>
+            <li><button (click)="login()">LOGIN OBS</button></li>
             <li>
                 <a class="dropdown-trigger" data-target="demos">
                     Listes de Demos pour angular V16 - Mise à jour 2023

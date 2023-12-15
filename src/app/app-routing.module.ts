@@ -15,6 +15,11 @@ import { CompoGuardedComponent } from './components/guards8/compo-guarded/compo-
 import { fakeauth8Guard } from './components/guards8/fakeauth8.guard'
 import { Refreshpromise9Component } from './components/refreshpromise9/refreshpromise9.component'
 import { ReactiveForms10Component } from './components/reactive-forms10/reactive-forms10.component'
+import { HttpObservable12Component } from './components/http-observable12/http-observable12.component'
+import { Signals13Component } from './components/signals13/signals13.component'
+import { Resolver14Component } from './components/resolver14/resolver14.component'
+import { restCountriesResolver } from './components/resolver14/services/rest-countries.resolver'
+import { AsyncValidators15Component } from './components/async-validators15/async-validators15.component'
 
 const routes: Routes = [
   { path: "", component: HomePageComponent },
@@ -43,6 +48,10 @@ const routes: Routes = [
   ]},
   { path : "refreshpromise9", component : Refreshpromise9Component},
   { path : "reactiveforms10", component : ReactiveForms10Component},
+  { path : "httpclientobs12", component : HttpObservable12Component},
+  { path : "signals13", component : Signals13Component},
+  { path : "resolver14", resolve : { listCountries : restCountriesResolver}, component : Resolver14Component},
+  { path : "asyncvalidator", component : AsyncValidators15Component},
 
 
   { path: "**", component: FourOfour5Component }

@@ -1,7 +1,7 @@
 import { LOCALE_ID, NgModule } from '@angular/core';
 import localFr from "@angular/common/locales/fr-BE"
 import { BrowserModule } from '@angular/platform-browser';
-
+import { HttpClientModule } from "@angular/common/http"
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
@@ -28,6 +28,10 @@ import { CompoGuardedComponent } from './components/guards8/compo-guarded/compo-
 import { Guards8Component } from './components/guards8/guards8.component';
 import { Refreshpromise9Component } from './components/refreshpromise9/refreshpromise9.component';
 import { ReactiveForms10Component } from './components/reactive-forms10/reactive-forms10.component';
+import { HttpObservable12Component } from './components/http-observable12/http-observable12.component';
+import { Signals13Component } from './components/signals13/signals13.component';
+import { Resolver14Component } from './components/resolver14/resolver14.component';
+import { AsyncValidators15Component } from './components/async-validators15/async-validators15.component';
 
 registerLocaleData(localFr)
 
@@ -54,6 +58,10 @@ registerLocaleData(localFr)
     CompoGuardedComponent,
     Refreshpromise9Component,
     ReactiveForms10Component,
+    HttpObservable12Component,
+    Signals13Component,
+    Resolver14Component,
+    AsyncValidators15Component,
   ],
   imports: [
     BrowserModule,
@@ -62,7 +70,8 @@ registerLocaleData(localFr)
     BrowserAnimationsModule,
     MatTableModule,
     MatPaginatorModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [
     { provide : LOCALE_ID, useValue : "fr-BE" },

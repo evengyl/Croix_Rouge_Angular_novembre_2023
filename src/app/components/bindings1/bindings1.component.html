@@ -162,3 +162,39 @@
     </div>
 
 </div>
+
+
+
+
+
+<h5>1 : Le HttpClient</h5>
+
+<div class="row">
+
+    <div class="col s6">
+        <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+                <div class="card-header bg-info text-white">
+                    Utilisations du get sur l'api restCountries
+                </div>
+                <div class="card-body">
+                    <table class="table table-hover">
+                        <tr>
+                            <th>Nom</th>
+                            <th>Surface</th>
+                            <th>Population</th>
+                            <th>Options</th>
+                        </tr>
+                        <tr *ngFor="let country of allCountries()">
+                            <td>{{country.name.official}}</td>
+                            <td>{{country.area}}</td>
+                            <td>{{country.population }}</td>
+                            <!-- <td><button class="btn btn-info" (click)="detailsCountry(country.name.common)">Détails</button></td> -->
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

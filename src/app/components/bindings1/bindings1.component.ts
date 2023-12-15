@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, WritableSignal } from '@angular/core';
+import { SignalService } from '../signals13/services/signal.service';
+import { HttpObservable13Service } from '../signals13/services/http-observable13.service';
 
 @Component({
   selector: 'app-bindings1',
@@ -22,6 +24,13 @@ export class Bindings1Component {
   public count : number = 0
   public inter : any = null
   public chrono : number = 0 
+
+    allCountries : WritableSignal<any[]>
+
+  constructor(private readonly signalsServe : HttpObservable13Service){
+    this.allCountries =  this.signalsServe.allCountries
+    this.signalsServe.getAll()
+  }
 
   public addOneCounter(){
     this.count ++
@@ -59,5 +68,6 @@ export class Bindings1Component {
   public testReference(value : any){
     alert(value)
   }
+
 
 }
